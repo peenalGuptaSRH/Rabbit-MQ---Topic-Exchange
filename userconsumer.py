@@ -18,7 +18,7 @@ channel = connection.channel()
 channel.exchange_declare(exchange='topic', exchange_type=ExchangeType.topic)
 
 # Declare a temporary queue with a random name. 'exclusive=True' means the queue will be deleted when the connection closes.
-queue = channel.queue_declare(queue='', exclusive=True)
+queue = channel.queue_declare(queue='user_queue', exclusive=True)
 
 # Bind the queue to the 'topic' exchange with a routing key pattern 'user.#'
 channel.queue_bind(exchange='topic', queue=queue.method.queue, routing_key='user.#')

@@ -18,7 +18,7 @@ channel = connection.channel()
 channel.exchange_declare(exchange='topic', exchange_type=ExchangeType.topic)
 
 # Declare a temporary, exclusive queue. This creates a queue with a unique name that will be deleted when the connection is closed.
-queue = channel.queue_declare(queue='', exclusive=True)
+queue = channel.queue_declare(queue='analytics_queue', exclusive=True)
 
 # Bind the queue to the 'topic' exchange with a routing key pattern. This routing key pattern will match messages with keys like '*.europe.*'.
 channel.queue_bind(exchange='topic', queue=queue.method.queue, routing_key='*.europe.*')
